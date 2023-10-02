@@ -3,6 +3,17 @@
 # A simple script to set my prefered keybinds and other settings on Gnome
 #     Rombertus
 
+# set dark mode and background
+gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
+gsettings set org.gnome.desktop.background picture-uri-dark "file://$(pwd)/forest-2-wp.jpg" 
+
+# enable fractional scaling for wayland gnome
+gsettings set org.gnome.mutter experimental-features "['scale-monitor-framebuffer']"
+
+# setup touchpad
+gsettings set org.gnome.desktop.peripherals.touchpad tap-to-click true
+
+
 # unbind launching applications
 for i in {1..9}; do gsettings set org.gnome.shell.keybindings switch-to-application-$i "[]";done
 
