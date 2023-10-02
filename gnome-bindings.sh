@@ -3,6 +3,9 @@
 # A simple script to set my prefered keybinds and other settings on Gnome
 #     Rombertus
 
+# unbind launching applications
+for i in {1..9}; do gsettings set org.gnome.shell.keybindings switch-to-application-$i "[]";done
+
 # Sets to 6 fixed workspaces and keybinds for workspace switching
 gsettings set org.gnome.mutter dynamic-workspaces false
 gsettings set org.gnome.desktop.wm.preferences num-workspaces 6
@@ -19,7 +22,7 @@ gsettings set org.gnome.settings-daemon.plugins.media-keys custom-keybindings \
 "['$KEY_PATH/custom0/']"
 
 names=("Terminal")
-commands=("gnome-terminal -e 'distrobox enter base'")
+commands=("gnome-terminal")
 bindings=("<Super>t")
 CUSTOM="org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings"
 
