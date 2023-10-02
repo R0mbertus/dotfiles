@@ -9,8 +9,8 @@ https://github.com/Fausto-Korpsvart/Gruvbox-GTK-Theme
 There are a couple of scripts. If you're running Fedora and Gnome you can just run like so:
 ```
 sh fedora-1.sh
-# it will reboot, 2nd scripts neede
-sh fedora-2.sh
+sh fedora-2.sh 
+sh fedora-3.sh
 ```
 
 
