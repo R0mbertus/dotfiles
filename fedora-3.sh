@@ -7,4 +7,8 @@
 # installs podman for distrobox
 sudo dnf install podman
 
-# 
+# install distrobox
+sudo dnf copr enable alciregi/distrobox
+sudo dnf install distrobox
+
+distrobox-create --name ctf --image kali-latest-stable:latest

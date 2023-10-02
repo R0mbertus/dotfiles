@@ -13,7 +13,6 @@ gsettings set org.gnome.mutter experimental-features "['scale-monitor-framebuffe
 # setup touchpad
 gsettings set org.gnome.desktop.peripherals.touchpad tap-to-click true
 
-
 # unbind launching applications
 for i in {1..9}; do gsettings set org.gnome.shell.keybindings switch-to-application-$i "[]";done
 
