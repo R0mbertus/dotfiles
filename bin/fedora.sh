@@ -8,7 +8,7 @@
 # ----------------------------------------------------------------
 
 APPS="gnome-extensions-app gnome-tweaks gnome-shell-extension-appindicator \
-gnome-shell-extension-pop-shell podman" 
+gnome-shell-extension-pop-shell podman terminator" 
 
 # ----------------------------------------------------------------
 # commands

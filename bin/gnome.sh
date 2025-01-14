@@ -13,7 +13,7 @@ KEY_PATH="/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings"
 
 # Custom commands tuple
 NAMES=("Terminal")
-COMMANDS=("gnome-terminal")
+COMMANDS=("terminator")
 BINDINGS=("<Super>t")
 
 # ----------------------------------------------------------------
