@@ -86,6 +86,17 @@ source $ZSH/oh-my-zsh.sh
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
 
+# Edit any prompt to include the current container we're in
+container() {
+  if [[ -n $CONTAINER_ID ]]; then
+    echo "%F{yellow}📦 [$CONTAINER_ID]%f"
+  fi
+}
+
+if [[ -n "$CONTAINER_ID" ]]; then
+	export PROMPT=$'\n'"$(container)"$PROMPT
+fi
+
 # Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then
 #   export EDITOR='vim'
