@@ -1,5 +1,8 @@
 # .bashrc
 
+# ble.sh hook
+[[ $- == *i* ]] && source ~/.local/share/blesh/ble.sh --attach=none
+
 # Source global definitions
 if [ -f /etc/bashrc ]; then
     . /etc/bashrc
@@ -23,3 +26,34 @@ if [ -d ~/.bashrc.d ]; then
     done
 fi
 unset rc
+
+# CUSTOM STUFF
+
+# User aliases
+alias ls='eza --icons'
+alias cat='bat'
+
+export PATH="$HOME/.local/bin:$HOME/.fzf/bin:$PATH"
+
+# Zoxide
+eval "$(zoxide init bash)"
+
+# Fuzzy Finder (Ctrl+R history search)
+eval "$(fzf --bash)"
+
+# Starship Prompt
+eval "$(starship init bash)"
+
+# ble.sh attach
+[[ ${BLE_VERSION-} ]] && ble-attach
+
+# distrobox host commands setup
+if [ -n "$CONTAINER_ID" ]; then
+    # Route VSCode commands out to the host machine
+    alias code="distrobox-host-exec code"
+    # Open links in host browser
+    alias xdg-open="distrobox-host-exec xdg-open"
+    # Put the host eza,bat for ls,cat in the distrobox
+    alias ls='distrobox-host-exec eza --icons'
+    alias cat='bat'
+fi

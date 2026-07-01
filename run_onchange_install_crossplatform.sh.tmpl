@@ -1,0 +1,34 @@
+#!/usr/bin/env bash
+
+{{ if eq .chezmoi.os "darwin" }}
+# ==========================================
+# macOS Installation (Using Homebrew)
+# ==========================================
+echo "Detected macOS. Installing via Homebrew..."
+
+# Install tools
+brew install starship zoxide fzf eza bat
+
+# Install the font
+brew tap homebrew/cask-fonts
+brew install --cask font-fira-code-nerd-font
+
+{{ else if eq .chezmoi.os "linux" }}
+# ==========================================
+# Linux Installation (Fedora)
+# ==========================================
+echo "Detected Linux. Installing via curl and package manager..."
+
+# Install tools locally
+mkdir -p ~/.local/bin
+curl -sS https://starship.rs/install.sh | sh -s -- -b ~/.local/bin
+curl -sS https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | sh
+
+# Install Nerd Font
+mkdir -p ~/.local/share/fonts/NerdFonts
+wget https://github.com/ryanoasis/nerd-fonts/releases/latest/download/FiraCode.zip -O /tmp/FiraCode.zip
+unzip -o /tmp/FiraCode.zip -d ~/.local/share/fonts/NerdFonts
+rm /tmp/FiraCode.zip
+fc-cache -fv
+
+{{ end }}
