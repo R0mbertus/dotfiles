@@ -1,0 +1,21 @@
+{{ if eq .chezmoi.os "linux" }}
+#!/bin/bash
+
+if [[ "$XDG_CURRENT_DESKTOP" != *"GNOME"* ]]; then
+    exit 0
+fi
+
+echo "Configuring GNOME desktop environment..."
+
+gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
+gsettings set org.gnome.mutter dynamic-workspaces false
+gsettings set org.gnome.desktop.wm.preferences num-workspaces 6
+
+for i in {1..6}; do
+    gsettings set org.gnome.shell.keybindings "switch-to-application-$i" "@as []"
+    gsettings set org.gnome.desktop.wm.keybindings "switch-to-workspace-$i" "['<Super>$i']"
+    gsettings set org.gnome.desktop.wm.keybindings "move-to-workspace-$i" "['<Super><Shift>$i']"
+done
+
+echo "GNOME configuration complete!"
+{{ end }}
