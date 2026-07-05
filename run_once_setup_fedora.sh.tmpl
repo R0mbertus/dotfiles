@@ -1,6 +1,7 @@
+#!/usr/bin/env bash
+
 {{ if eq .chezmoi.os "linux" }}
 {{ if eq .chezmoi.osRelease.id "fedora" }}
-#!/bin/bash
 
 echo "Fedora detected! Running system configuration..."
 
@@ -30,10 +31,6 @@ sudo dnf install -y code
 # ==========================================
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 
-flatpak install -y flathub \
-    com.spotify.Client \
-    com.discordapp.Discord
-
 # ==========================================
 # 5. Custom Terminal Keybinding (Super+T)
 # ==========================================
@@ -42,6 +39,6 @@ dconf write /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/cus
 dconf write /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/binding "'<Super>t'"
 dconf write /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings "['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/']"
 
-echo "Fedora setup complete! You are ready to roll."
+echo "Fedora setup complete!"
 {{ end }}
 {{ end }}
