@@ -29,6 +29,8 @@ unset rc
 
 # CUSTOM STUFF
 
+export PATH=$PATH:/usr/local/go/bin
+
 # User aliases
 alias ls='eza --icons'
 alias cat='bat'
