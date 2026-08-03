@@ -11,7 +11,10 @@ brew install starship zoxide fzf eza bat
 
 # Install the font
 brew tap homebrew/cask-fonts
-brew install --cask font-fira-code-nerd-font
+brew install --cask font-hack-nerd-font
+
+curl -L https://github.com/akinomyoga/ble.sh/releases/download/nightly/ble-nightly.tar.xz | tar xJf -
+bash ble-nightly/ble.sh --install ~/.local/share
 
 {{ else if eq .chezmoi.os "linux" }}
 # ==========================================

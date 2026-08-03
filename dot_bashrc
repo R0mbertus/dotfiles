@@ -1,7 +1,9 @@
 # .bashrc
 
 # ble.sh hook
-[[ $- == *i* ]] && source ~/.local/share/blesh/ble.sh --attach=none
+if [ "$(uname)" != 'Darwin' ]; then
+    [[ $- == *i* ]] && source ~/.local/share/blesh/ble.sh --attach=none
+fi
 
 # Source global definitions
 if [ -f /etc/bashrc ]; then
@@ -32,7 +34,7 @@ unset rc
 export PATH=$PATH:/usr/local/go/bin
 
 # User aliases
-alias ls='eza --icons'
+alias ls='eza --icons=auto'
 alias cat='bat'
 alias cd='z'
 
@@ -48,10 +50,16 @@ eval "$(fzf --bash)"
 eval "$(starship init bash)"
 
 # ble.sh attach
-[[ ${BLE_VERSION-} ]] && ble-attach
+if [ "$(uname)"  != 'Darwin' ]; then
+    [[ ${BLE_VERSION-} ]] && ble-attach
+fi
 
 # distrobox host commands setup
-if [ -n "$CONTAINER_ID" ]; then
+if [ "$(uname)"  == 'Darwin' ]; then
+    export BASH_SILENCE_DEPRECATION_WARNING=1
+    export EDITOR="nano"
+    export VISUAL="$EDITOR"
+elif [ -n "$CONTAINER_ID" ]; then
     # Route VSCode commands out to the host machine
     alias code="distrobox-host-exec code"
     # Open links in host browser
